@@ -1,16 +1,16 @@
-const { compose, map } = require('ramda')
-const { isFizz, isBuzz, isFizzBuzz } = require('./checks.js')
-const { initializeArray, resultToString } = require('./utils.js')
+const R = require('ramda')
+const { isFizz, isBuzz, isFizzBuzz, contains } = require('./checks.js')
+const { initializeArray, resultToString, numberToArray } = require('./utils.js')
 
 const length = process.argv[2] || 100
 
 const initializedArray = initializeArray(length)
 
-const fizzBuzz = compose(
+const fizzBuzz = R.compose(
 	resultToString,
-	map(i => isBuzz(i) ? 'Buzz' : i),
-	map(i => isFizz(i) ? 'Fizz' : i),
-	map(i => isFizzBuzz(i) ? 'FizzBuzz' : i)
+	R.map(i => isBuzz(i) ? 'Buzz' : i),
+	R.map(i => isFizz(i) ? 'Fizz' : i),
+	R.map(i => isFizzBuzz(i) ? 'FizzBuzz' : i)
 )
 
 const result = fizzBuzz(initializedArray)
