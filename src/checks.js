@@ -1,7 +1,7 @@
 const R = require('ramda')
 const { numberToArray } = require('./utils.js')
 
-// doesContain :: Number -> [] -> Bool
+// contains :: Number -> [] -> Bool
 const contains = i => a =>
 	R.contains(i, a)
 
